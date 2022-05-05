@@ -9,19 +9,19 @@ initializeApp({
 
 const db = getFirestore();
 
-var identidad = {
-  cedula:"27888777",
-  nombres: "Claudia Maria",
-  apellidos:"Ramirez Muñoz",
-  edad:50
+var ident = {
+  "cedula":"27888777",
+  "nombres": "Claudia Maria",
+  "apellidos":"Ramirez Muñoz",
+  "edad":50
 }
 
 db.collection("supertienda").add({
-  identidad:[identidad],
-  celular:"3109992345",
-  direccion:"Calle 23 # 23-23",
-  email:"claudita@ghmail.com",
-  avatar:"123435.jpg"
+  "identidad":[ident],
+  "celular":"3109992345",
+  "direccion":"Calle 23 # 23-23",
+  "email":"claudita@ghmail.com",
+  "avatar":[123435]
 })
 .then((doc)=>{
   console.log(`Cliente registrado con el ID ${doc.id}`);
