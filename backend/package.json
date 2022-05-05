@@ -10,5 +10,8 @@
     "supertienda"
   ],
   "author": "Germán Montenegro Revelo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^10.1.0"
+  }
 }
