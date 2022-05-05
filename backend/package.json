@@ -1,0 +1,14 @@
+{
+  "name": "supertienda-backend",
+  "version": "1.0.0",
+  "description": "Este es el backend de supertienda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "supertienda"
+  ],
+  "author": "Germán Montenegro Revelo",
+  "license": "ISC"
+}
