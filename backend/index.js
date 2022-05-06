@@ -1,10 +1,36 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+app.use(express.static('public'));  //Esto hace que la app pueda publicar cosas estáticas
+
 const db = require('./src/db/crudSupertienda.js');
 
-db.getClientes();
+app.get('/', function (req, res) {
+    res.send('Servidor de Supertienda con Express')
+});
 
 
+app.get('/nueva-ruta', (req, res)=>{
+    res.send('Esta es una nueva ruta en servidor de Express')
+})
 
+app.get('/get-clientes/:id', (req, res)=>{
+    const cid = req.params.id; 
+    res.send('Se consultó el cliente '+cid);
+})
 
+app.get('/get-cliente', (req, res)=>{
+    res.json({
+        nombre:"Germán Montenegro Revelo",
+        cedula:"89222555",
+        email:"gamr@gmail.com"
+    })
+})
+
+app.listen(port, ()=>{
+      console.log('My port is listering '+port);
+})
+  
 
 
 
