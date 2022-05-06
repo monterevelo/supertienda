@@ -9,27 +9,62 @@ app.get('/', function (req, res) {
     res.send('Servidor de Supertienda con Express')
 });
 
+// //Peticón para obtener todos los clientes
+// app.get('/get-clientes/', (req, res)=>{
+//     db.getClientes(function(arrayClientes){
+//         var arreglo = arrayClientes;
+//         res.send(arreglo);
+//     })
+// })
 
-app.get('/nueva-ruta', (req, res)=>{
-    res.send('Esta es una nueva ruta en servidor de Express')
-})
+// //Petición para obtener un cliente en particular mediante su índice de posición en la BD
+// app.get('/get-clientes/', (req, res)=>{
+//     db.getClientes(function(arrayClientes){
+//         var arreglo = arrayClientes;
+//         res.send(arreglo[0]);
+//     })
+// })
 
-app.get('/get-clientes/:id', (req, res)=>{
-    const cid = req.params.id; 
-    res.send('Se consultó el cliente '+cid);
-})
-
-app.get('/get-cliente', (req, res)=>{
-    res.json({
-        nombre:"Germán Montenegro Revelo",
-        cedula:"89222555",
-        email:"gamr@gmail.com"
+//Petición para obtener un cliente en particular mediante su id
+app.get('/get-cliente/:id', (req, res)=>{
+    const cid = req.params.id;
+    db.getCliente(cid, function(doc){
+        res.send(doc);
     })
 })
 
 app.listen(port, ()=>{
-      console.log('My port is listering '+port);
+    console.log('My port is listering '+port);
 })
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/nueva-ruta', (req, res)=>{
+//     res.send('Esta es una nueva ruta en servidor de Express')
+// })
+
+// app.get('/get-clientes/:id', (req, res)=>{
+//     const cid = req.params.id; 
+//     res.send('Se consultó el cliente '+cid);
+// })
+
+// app.get('/get-cliente', (req, res)=>{
+//     res.json({
+//         nombre:"Germán Montenegro Revelo",
+//         cedula:"89222555",
+//         email:"gamr@gmail.com"
+//     })
+// })
+
+
   
 
 
