@@ -33,9 +33,61 @@ function getCliente(cid, callback){
         })
   }
 
+
+// Agregar un cliente
+function addCliente(cliente, callback){
+    return db.collection('clientes').add(cliente)
+        .then(()=>{
+            callback('Cliente creado exitósamente')
+        })
+        .catch(err => {
+            callback("Error al crear el cliente",err)
+        })
+  }
+
+// Actualizar un cliente, sobre-escribiendo en la BD
+function UpdateClienteTotally(cid, cliente, callback){
+    return db.collection('clientes').doc(cid).set(cliente)
+        .then(()=>{
+            callback('Cliente actualizado exitósamente')
+        })
+        .catch(err => {
+            callback("Error al actualizar el cliente",err)
+        })
+  }  
+
+
+// Actualizar un cliente, sin sobre-escribir en la BD
+function UpdateClientePartial(cid, cliente, callback){
+    return db.collection('clientes').doc(cid).update(cliente)
+        .then(()=>{
+            callback('Cliente actualizado exitósamente')
+        })
+        .catch(err => {
+            callback("Error al actualizar el cliente",err)
+        })
+  }  
+
+
+// Eliminar un cliente de la BD
+function deleteCliente(cid, callback){
+    return db.collection('clientes').doc(cid).delete()
+        .then(()=>{
+            callback('Cliente eliminado exitósamente')
+        })
+        .catch(err => {
+            callback("Error al eliminar el cliente",err)
+        })
+  }  
+
+
   module.exports = {
       getClientes,
-      getCliente
+      getCliente,
+      addCliente,
+      UpdateClienteTotally,
+      UpdateClientePartial,
+      deleteCliente
   }
 
 

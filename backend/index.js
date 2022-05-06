@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 app.use(express.static('public'));  //Esto hace que la app pueda publicar cosas estáticas
+app.use(express.json());
 
-const db = require('./src/db/crudSupertienda.js');
+const dbC = require('./src/db/crudSupertienda.js');
 
 app.get('/', function (req, res) {
     res.send('Servidor de Supertienda con Express')
@@ -11,7 +12,7 @@ app.get('/', function (req, res) {
 
 // //Peticón para obtener todos los clientes
 // app.get('/get-clientes/', (req, res)=>{
-//     db.getClientes(function(arrayClientes){
+//     dbC.getClientes(function(arrayClientes){
 //         var arreglo = arrayClientes;
 //         res.send(arreglo);
 //     })
@@ -19,19 +20,54 @@ app.get('/', function (req, res) {
 
 // //Petición para obtener un cliente en particular mediante su índice de posición en la BD
 // app.get('/get-clientes/', (req, res)=>{
-//     db.getClientes(function(arrayClientes){
+//     dbC.getClientes(function(arrayClientes){
 //         var arreglo = arrayClientes;
 //         res.send(arreglo[0]);
 //     })
 // })
 
 //Petición para obtener un cliente en particular mediante su id
-app.get('/get-cliente/:id', (req, res)=>{
+app.get('/get-cliente/:id', (req, res)=>{   //Nos referimos solo a cliente (no clientes) por ser uno solo
     const cid = req.params.id;
-    db.getCliente(cid, function(doc){
+    dbC.getCliente(cid, function(doc){
         res.send(doc);
     })
 })
+
+//Petición para crear un cliente
+app.post('/add-cliente', (req, res)=>{ 
+    const cliente = req.body;
+    dbC.addCliente(cliente, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar un cliente, sobre-escribiendo en la BD
+app.put('/update-cliente-totally/:id', (req, res)=>{ 
+    const cliente = req.body;
+    const cid = req.params.id;
+    dbC.UpdateClienteTotally(cid, cliente, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar un cliente, sin sobre-escribir en la BD
+app.patch('/update-cliente-partial/:id', (req, res)=>{ 
+    const cliente = req.body;
+    const cid = req.params.id;
+    dbC.UpdateClientePartial(cid, cliente, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para eliminar un cliente de la BD
+app.delete('/delete-cliente/:id', (req, res)=>{ 
+    const cid = req.params.id;
+    dbC.deleteCliente(cid, function(response){
+        res.send(response);
+    })
+})
+
 
 app.listen(port, ()=>{
     console.log('My port is listering '+port);
