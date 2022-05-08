@@ -7,6 +7,8 @@ app.use(express.json());  //Esto se hace para que la app pueda identificar objet
 const dbC = require('./src/db/crudClientes.js');
 const dbU = require('./src/db/crudUsuarios.js');
 const dbP = require('./src/db/crudProductos.js');
+const dbG = require('./src/db/crudCategorias.js');
+
 
 app.get('/', function (req, res) {
     res.send('Servidor de Supertienda con Express')
@@ -178,6 +180,68 @@ app.delete('/productos/:id', (req, res)=>{
 
 // ********************************** Fin Productos *********************************   
 
+
+// *********************************** Categorías ***********************************   
+
+//Petición para obtener todas las catgorías
+app.get('/categorias', (req, res)=>{
+    dbG.getCategorias(function(arrayCategorias){
+        var arreglo = arrayCategorias;
+        res.send(arreglo);
+    })
+})
+
+//Petición para obtener una categoría en particular mediante su índice de posición en la BD
+app.get('/categorias', (req, res)=>{
+    dbG.getCategorias(function(arrayCategorias){
+        var arreglo = arrayCategorias;
+        res.send(arreglo[0]);
+    })
+})
+
+//Petición para obtener una categoria en particular mediante su id
+app.get('/categorias/:id', (req, res)=>{  
+    const gid = req.params.id;
+    dbG.getCategoria(gid, function(doc){
+        res.send(doc);
+    })
+})
+
+//Petición para crear una categoria
+app.post('/categorias', (req, res)=>{ 
+    const categoria = req.body;
+    dbG.addCategoria(categoria, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una categoria, sobre-escribiendo en la BD
+app.put('/categorias/:id', (req, res)=>{ 
+    const categoria= req.body;
+    const gid = req.params.id;
+    dbG.UpdateCategoriaTotally(gid, categoria, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una categoría, sin sobre-escribir en la BD
+app.patch('/categorias/:id', (req, res)=>{ 
+    const categoria = req.body;
+    const gid = req.params.id;
+    dbG.UpdateCategoriaPartial(gid, categoria, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para eliminar una categoria de la BD
+app.delete('/categorias/:id', (req, res)=>{ 
+    const gid = req.params.id;
+    dbG.deleteCategoria(gid, function(response){
+        res.send(response);
+    })
+})
+
+// ********************************* Fin Categorías *********************************   
 
 app.listen(port, ()=>{
     console.log('My port is listering '+port);
