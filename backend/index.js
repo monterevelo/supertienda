@@ -8,7 +8,8 @@ const dbC = require('./src/db/crudClientes.js');
 const dbU = require('./src/db/crudUsuarios.js');
 const dbP = require('./src/db/crudProductos.js');
 const dbG = require('./src/db/crudCategorias.js');
-
+const dbT = require('./src/db/crudTiendas.js');
+const dbV = require('./src/db/crudVentas.js');
 
 app.get('/', function (req, res) {
     res.send('Servidor de Supertienda con Express')
@@ -242,6 +243,134 @@ app.delete('/categorias/:id', (req, res)=>{
 })
 
 // ********************************* Fin Categorías *********************************   
+
+
+// ************************************* Ventas *************************************   
+
+//Petición para obtener todas las ventas
+app.get('/ventas', (req, res)=>{
+    dbV.getVentas(function(arrayVentas){
+        var arreglo = arrayVentas;
+        res.send(arreglo);
+    })
+})
+
+//Petición para obtener una venta en particular mediante su índice de posición en la BD
+app.get('/ventas', (req, res)=>{
+    dbV.getVentas(function(arrayVentas){
+        var arreglo = arrayVentas;
+        res.send(arreglo[0]);
+    })
+})
+
+//Petición para obtener una venta en particular mediante su id
+app.get('/ventas/:id', (req, res)=>{  
+    const vid = req.params.id;
+    dbV.getVenta(vid, function(doc){
+        res.send(doc);
+    })
+})
+
+//Petición para crear una venta
+app.post('/ventas', (req, res)=>{ 
+    const venta = req.body;
+    dbV.addVenta(venta, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una venta, sobre-escribiendo en la BD
+app.put('/ventas/:id', (req, res)=>{ 
+    const venta= req.body;
+    const vid = req.params.id;
+    dbV.UpdateVentaTotally(vid, venta, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una venta, sin sobre-escribir en la BD
+app.patch('/ventas/:id', (req, res)=>{ 
+    const venta = req.body;
+    const vid = req.params.id;
+    dbV.UpdateVentaPartial(vid, venta, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para eliminar una venta de la BD
+app.delete('/ventas/:id', (req, res)=>{ 
+    const vid = req.params.id;
+    dbV.deleteVenta(vid, function(response){
+        res.send(response);
+    })
+})
+
+// *********************************** Fin Ventas ***********************************   
+
+
+// ************************************* Tiendas ************************************   
+
+//Petición para obtener todas las tiendas
+app.get('/tiendas', (req, res)=>{
+    dbT.getTiendas(function(arrayTiendas){
+        var arreglo = arrayTiendas;
+        res.send(arreglo);
+    })
+})
+
+//Petición para obtener una tienda en particular mediante su índice de posición en la BD
+app.get('/tiendas', (req, res)=>{
+    dbT.getTiendas(function(arrayTiendas){
+        var arreglo = arrayTiendas;
+        res.send(arreglo[0]);
+    })
+})
+
+//Petición para obtener una tienda en particular mediante su id
+app.get('/tiendas/:id', (req, res)=>{  
+    const tid = req.params.id;
+    dbT.getTienda(tid, function(doc){
+        res.send(doc);
+    })
+})
+
+//Petición para crear una tienda
+app.post('/tiendas', (req, res)=>{ 
+    const tienda = req.body;
+    dbT.addTienda(tienda, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una tienda, sobre-escribiendo en la BD
+app.put('/tiendas/:id', (req, res)=>{ 
+    const tienda= req.body;
+    const tid = req.params.id;
+    dbT.UpdateTiendaTotally(tid, tienda, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para actualizar una tienda, sin sobre-escribir en la BD
+app.patch('/tiendas/:id', (req, res)=>{ 
+    const tienda = req.body;
+    const tid = req.params.id;
+    dbT.UpdateTiendaPartial(tid, tienda, function(response){
+        res.send(response);
+    })
+})
+
+//Petición para eliminar una categoria de la BD
+app.delete('/tiendas/:id', (req, res)=>{ 
+    const tid = req.params.id;
+    dbT.deleteTienda(tid, function(response){
+        res.send(response);
+    })
+})
+
+// *********************************** Fin Tiendas **********************************   
+
+
 
 app.listen(port, ()=>{
     console.log('My port is listering '+port);

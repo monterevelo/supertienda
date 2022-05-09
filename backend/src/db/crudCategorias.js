@@ -38,7 +38,7 @@ function getCategoria(gid, callback){
 function addCategoria(categoria, callback){
     return db.collection('categorias').add(categoria)
         .then(()=>{
-            callback('Catgoría creada exitósamente')
+            callback('Categoría creada exitósamente')
         })
         .catch(err => {
             callback("Error al crear la categoría",err)
@@ -47,7 +47,7 @@ function addCategoria(categoria, callback){
 
 // Actualizar una categoría, sobre-escribiendo en la BD
 function UpdateCategoriaTotally(gid, categoria, callback){
-    return db.collection('categoria').doc(gid).set(categoria)
+    return db.collection('categorias').doc(gid).set(categoria)
         .then(()=>{
             callback('Categoria actualizada exitósamente')
         })
