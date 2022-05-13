@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 app.use(express.static('public'));  //Esto hace que la app pueda publicar cosas estáticas
 app.use(express.json());  //Esto se hace para que la app pueda identificar objetos JSON en las actualizaciones (PUT,PATCH)
+const axios = require('axios').default; 
 
 const dbC = require('./src/db/crudClientes.js');
 const dbU = require('./src/db/crudUsuarios.js');
@@ -93,9 +94,24 @@ app.get('/usuarios/:id', (req, res)=>{
 //Petición para crear un usuario
 app.post('/usuarios', (req, res)=>{ 
     const usuario = req.body;
-    dbU.addUsuario(usuario, function(response){
-        res.send(response);
-    })
+    const country = usuario.pais;
+    axios.get('https://restcountries.com/v3.1/name/'+country)
+        .then(function (response) {
+            // handle success
+            usuario.languages = response.data[0].languages;
+        })
+        .catch(function (error) {
+            res.status(400).send(error);
+        })
+        .then(function () {
+            dbU.addUsuario(usuario, function(response){
+                if(response == "Usuario creado exitósamente"){
+                    res.status(201).send(response);
+                }else{
+                    res.status(400).send(response);
+                }
+            })
+        });
 })
 
 //Petición para actualizar un usuario, sobre-escribiendo en la BD
@@ -112,6 +128,15 @@ app.delete('/usuarios/:id', (req, res)=>{
     const uid = req.params.id;
     dbU.deleteUsuario(uid, function(response){
         res.send(response);
+    })
+})
+
+
+//Petición para buscar un usuario en la BD filtrando datos
+app.get('/usuarios/search/:ciudad', (req, res)=>{ 
+    const uciudad = req.params.ciudad;
+    dbU.searchUsuario(uciudad, function(arrayUsuarios){
+        res.send(arrayUsuarios);
     })
 })
 

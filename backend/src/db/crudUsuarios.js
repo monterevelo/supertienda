@@ -52,9 +52,30 @@ function deleteUsuario(uid, callback){
   }  
 
 
+//Filtrar un usuario de la BD
+function searchUsuario(ciudad, callback){
+    return db.collection('usuarios').where("ciudad","==",ciudad).get()
+        .then((refDoc) => {
+            var arrayUsuarios = [];
+            refDoc.forEach(doc => {
+                arrayUsuarios.push(doc.data());
+            })
+            callback (arrayUsuarios);
+        })
+        .catch((err) => {
+            callback("Error al buscar el usuario",err)
+        })
+}
+
+
+
+
+
+
   module.exports = {
       getUsuario,
       addUsuario,
       UpdateUsuarioTotally,
-      deleteUsuario
+      deleteUsuario,
+      searchUsuario
   }
