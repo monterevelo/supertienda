@@ -1,0 +1,52 @@
+//Petición para actualizar un usuario, sin sobre-escribir en la BD
+router.patch('/:id', (req, res)=>{ 
+    const uid = req.params.id;
+    const usuario = req.body;
+    usuario.id = uid;
+    
+    //Buscar la posición del elemento dentro del objeto según el id ingresado en la ruta
+    var end=0;
+    for(var i in db){
+        console.log(i);
+        console.log(db[i]);
+        for (var j in db[i]){
+            console.log(j);
+            if (j=="id" & db[i][j]==uid){
+                console.log("eureka!");
+                console.log("el id:",uid," se encuentra en la posición:",i);
+                var pos = i;
+                end = 1;
+            }
+            if (end == 1){
+                console.log("salida1");
+                break;
+            }
+        }
+        if (end == 1){
+            console.log("salida2");
+            break;
+        }
+    }
+    console.log("Posición del elemento dentro del objeto:",pos);
+
+    //Basados en la posición (pos) encontrada anteriormente
+    //asignamos los nuevos valores solo a las claves ingresadas para actualizar el usuario
+    for (var clave in usuario){
+        
+        // console.log(clave," :  ",usuario[clave]);
+        // if(clave in db[pos] & clave !="id"){
+        //     console.log("la clave",clave,"SI esta en la BD");
+        //     console.log("el valor actual de ",clave,"en la BD es:",db[pos][clave]);
+        //     console.log("y se reemplazará por ",usuario[clave]);
+        //     db[pos][clave] = usuario[clave];
+        // }else{
+        //     //console.log("la clave",clave,"NO esta en la BD");
+        //     //Se ingresa el nuevo campo al usuario
+        //     db[pos][clave]= usuario[clave];
+        // }
+
+        db[pos][clave]= usuario[clave];
+
+    }
+    res.send(db[pos]);
+})
