@@ -68,7 +68,7 @@ router.patch('/:id', (req, res)=>{
     for (var clave in usuario){
         db[pos][clave]= usuario[clave];
     }
-    res.send(db[pos]);
+    res.send('Usuario actualizado exitósamente');
 })
 
 
