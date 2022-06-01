@@ -1,10 +1,15 @@
 import React from 'react'
+import {Navigate} from 'react-router-dom'
 
-const Categorias = () => {
+const Categorias =() => {
+  var component = <Navigate to="/"/>
+  if(JSON.parse(localStorage.getItem('session')) != undefined){
+    component = <h1>Categorias</h1>
+  }
   return (
-    <>
-      <h1>Categorías</h1>
-    </>
+    <div>
+      {component}
+    </div>
   )
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
-import UserHome from '../components/UserHome'
 import {Navigate} from 'react-router-dom'
 
-const Home =() => {
+
+const IniciarSesion =() => {
   var component = <Navigate to="/"/>
   if(JSON.parse(localStorage.getItem('session')) != undefined){
-    component = <UserHome/>
+    component = <h1>Iniciar Sesión</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Home =() => {
   )
 }
 
-export default Home
+export default IniciarSesion

@@ -1,11 +1,12 @@
 import React from 'react'
-import UserHome from '../components/UserHome'
+import ConsultaCliente from '../components/ConsultaCliente'
 import {Navigate} from 'react-router-dom'
 
-const Home =() => {
+
+const Consulta1 =() => {
   var component = <Navigate to="/"/>
   if(JSON.parse(localStorage.getItem('session')) != undefined){
-    component = <UserHome/>
+    component = <ConsultaCliente/>
   }
   return (
     <div>
@@ -14,4 +15,4 @@ const Home =() => {
   )
 }
 
-export default Home
+export default Consulta1

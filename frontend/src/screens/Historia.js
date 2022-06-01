@@ -1,10 +1,16 @@
 import React from 'react'
+import {Navigate} from 'react-router-dom'
 
-const Historia = () => {
+
+const Historia =() => {
+  var component = <Navigate to="/"/>
+  if(JSON.parse(localStorage.getItem('session')) != undefined){
+    component = <h1>Historia</h1>
+  }
   return (
-    <>
-      <h1>Historia</h1>
-    </>
+    <div>
+      {component}
+    </div>
   )
 }
 

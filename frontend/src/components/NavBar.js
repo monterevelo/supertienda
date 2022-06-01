@@ -2,6 +2,9 @@ import React from 'react'
 import {Nav, Navbar, NavDropdown, Container} from 'react-bootstrap'
 
 const NavBar = () => {
+  const closeSession = () =>{
+    localStorage.clear();
+  }
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,6 +25,9 @@ const NavBar = () => {
               <Nav.Link href="categorias">Categorias</Nav.Link>
               <Nav.Link href="tiendas">Tiendas</Nav.Link>
               <Nav.Link href="ventas">Ventas</Nav.Link>
+              
+              <Nav.Link href="consultacliente">Consulta1</Nav.Link>
+              
               <NavDropdown title="Contáctenos" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="enviarmensaje">Enviar mensaje</NavDropdown.Item>
                 <NavDropdown.Item href="respondermensaje">Responder mensaje</NavDropdown.Item>
@@ -31,8 +37,12 @@ const NavBar = () => {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link href="masdetalles">Más detalles</Nav.Link>
-              <Nav.Link eventKey={2} href="noticias">Noticias</Nav.Link>
+              <Nav.Link href="registrarse">Registrarse</Nav.Link>
+              <Nav.Link href="iniciarsesion">Iniciar Sesión</Nav.Link>
+
+              <Nav.Link href="/" onClick={closeSession}>Salir</Nav.Link>
+              
+
             </Nav>
           </Navbar.Collapse>
         </Container>

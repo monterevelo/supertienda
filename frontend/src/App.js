@@ -15,15 +15,19 @@ import Productos from "./screens/Productos";
 import Categorias from "./screens/Categorias";
 import Tiendas from "./screens/Tiendas";
 import Ventas from "./screens/Ventas";
+
+import Consulta1 from "./screens/Consulta1";
+
 import Historia from "./screens/Historia";
 import Mision from "./screens/Mision";
 import Vision from "./screens/Vision";
 import EnviarMensaje from "./screens/EnviarMensaje";
 import ResponderMensaje from "./screens/ResponderMensaje";
 import InfoDesarrollador from "./screens/InfoDesarrollador";
-import MasDetalles from "./screens/MasDetalles";
-import Noticias from "./screens/Noticias";
 import MapaSitio from "./screens/MapaSitio";
+import Registrarse from "./screens/Registrarse";
+import IniciarSesion from "./screens/IniciarSesion";
+
 
 function App() {
   return (
@@ -38,6 +42,9 @@ function App() {
         <Route path="/categorias" element={<Categorias />} />
         <Route path="/tiendas" element={<Tiendas />} />
         <Route path="/ventas" element={<Ventas />} />
+
+        <Route path="/consultacliente" element={<Consulta1 />} />
+
         <Route path="/historia" element={<Historia />} />
         <Route path="/mision" element={<Mision />} />
         <Route path="/vision" element={<Vision />} />
@@ -45,8 +52,8 @@ function App() {
         <Route path="/respondermensaje" element={<ResponderMensaje />} />
         <Route path="/infodesarrollador" element={<InfoDesarrollador />} />
         <Route path="/mapasitio" element={<MapaSitio />} />
-        <Route path="/masdetalles" element={<MasDetalles />} />
-        <Route path="/noticias" element={<Noticias />} />
+        <Route path="/registrarse" element={<Registrarse />} />
+        <Route path="/iniciarsesion" element={<IniciarSesion />} />
        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
