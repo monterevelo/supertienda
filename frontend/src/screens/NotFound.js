@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 
 const NotFound = () => {
   var component = <Navigate to="/" />
-  if (JSON.parse(localStorage.getItem('session')) != undefined) {
+  if (JSON.parse(localStorage.getItem('session')) !== undefined) {
     component = <Alert key="1" variant="danger">
       Not Found
       <Alert.Link href="/">.    Volver.</Alert.Link>

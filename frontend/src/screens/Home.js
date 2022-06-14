@@ -4,7 +4,7 @@ import {Navigate} from 'react-router-dom'
 
 const Home =() => {
   var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) != undefined){
+  if(JSON.parse(localStorage.getItem('session')) !== undefined){
     component = <UserHome/>
   }
   return (

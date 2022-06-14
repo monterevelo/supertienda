@@ -4,7 +4,7 @@ import {Navigate} from 'react-router-dom'
 
 const Historia =() => {
   var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) != undefined){
+  if(JSON.parse(localStorage.getItem('session')) !== undefined){
     component = <h1>Historia</h1>
   }
   return (

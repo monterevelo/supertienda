@@ -4,10 +4,11 @@ import {Navigate} from 'react-router-dom'
 
 const IniciarSesion =() => {
   var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) != undefined){
+  if(JSON.parse(localStorage.getItem('session')) !== undefined){
     component = <h1>Iniciar Sesión</h1>
   }
   return (
+    
     <div>
       {component}
     </div>
