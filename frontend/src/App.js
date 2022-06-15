@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //Components
 import NavBar from "./components/NavBar";
+import NavBarLanding from "./components/NavBarLanding";
+
 
 //Import screens
 import Home from "./screens/Home";
@@ -28,11 +30,23 @@ import MapaSitio from "./screens/MapaSitio";
 import Registrarse from "./screens/Registrarse";
 import IniciarSesion from "./screens/IniciarSesion";
 
+import Salir from "./screens/Salir"; 
+
 
 function App() {
+
+  if(JSON.parse(localStorage.getItem('session')) != undefined){
+    var component = <NavBar />
+  }else{
+    component = <NavBarLanding />
+  }
+
   return (
     <BrowserRouter>
-      <NavBar />
+      <div>
+        {component}
+      </div>
+        
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
@@ -54,6 +68,9 @@ function App() {
         <Route path="/mapasitio" element={<MapaSitio />} />
         <Route path="/registrarse" element={<Registrarse />} />
         <Route path="/iniciarsesion" element={<IniciarSesion />} />
+        
+        <Route path="/salir" element={<Salir />} />
+        
        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

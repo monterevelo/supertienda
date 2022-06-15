@@ -4,7 +4,7 @@ import {Navigate} from 'react-router-dom'
 
 const Productos =() => {
   var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) !== undefined){
+  if(JSON.parse(localStorage.getItem('session')) != undefined){
     component = <h1>Productos</h1>
   }
   return (

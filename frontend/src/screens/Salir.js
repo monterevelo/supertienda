@@ -1,11 +1,11 @@
 import React from 'react'
-import UserHome from '../components/UserHome'
 import {Navigate} from 'react-router-dom'
 
-const Home =() => {
+
+const Salir =() => {
   var component = <Navigate to="/"/>
   if(JSON.parse(localStorage.getItem('session')) != undefined){
-    component = <UserHome/>
+    component = <a href="https://www.google.com/"></a>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Home =() => {
   )
 }
 
-export default Home
+export default Salir

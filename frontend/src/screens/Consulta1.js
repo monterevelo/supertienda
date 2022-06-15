@@ -5,7 +5,7 @@ import {Navigate} from 'react-router-dom'
 
 const Consulta1 =() => {
   var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) !== undefined){
+  if(JSON.parse(localStorage.getItem('session')) != undefined){
     component = <ConsultaCliente/>
   }
   return (
