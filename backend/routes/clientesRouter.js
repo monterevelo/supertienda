@@ -61,4 +61,12 @@ router.delete('/:id', (req, res)=>{
     })
 })
 
+//Petición para buscar un cliente en la BD filtrando datos
+router.get('/search/:ciudad', (req, res)=>{ 
+    const cciudad = req.params.ciudad;
+    dbC.searchCliente(cciudad, function(doc){
+        res.send(doc);
+    })
+})
+
 module.exports = router;

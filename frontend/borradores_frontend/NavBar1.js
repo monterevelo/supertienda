@@ -1,20 +1,36 @@
-import React from 'react';
-import { Navbar, NavDropdown } from 'react-bootstrap';
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+import React from 'react'
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap'
 
 const NavBar = () => {
 
+  var component = <>
+    if({JSON.parse(localStorage.getItem('session') != undefined)}){
+      <Navbar.Brand href="/home">Supertienda</Navbar.Brand>  
+    }else{
+      <Navbar.Brand href="/">Supertienda</Navbar.Brand>
+    }
+  </>
+
+  const obj = JSON.parse(localStorage.getItem('session'))
+  console.log(obj['isNew'])
+  if(obj['isNew'] == false){
+    console.log('Es Falso')
+  }else{
+    console.log('Es Verdadero')
+  }
+  
   const closeSession = () => {
-    //localStorage.removeItem("user");
     localStorage.clear();
   }
+  
   return (
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="home">Supertienda</Navbar.Brand>
+          <>
+            {component}       
+          </>
+          
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -46,6 +62,7 @@ const NavBar = () => {
               <Nav.Link href="iniciarsesion">Iniciar Sesión</Nav.Link>
 
               <Nav.Link href="/" onClick={closeSession}>Salir</Nav.Link>
+
 
             </Nav>
           </Navbar.Collapse>

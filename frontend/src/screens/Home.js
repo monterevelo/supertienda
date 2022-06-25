@@ -3,15 +3,15 @@ import UserHome from '../components/UserHome'
 import {Navigate} from 'react-router-dom'
 
 const Home =() => {
-  var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) != undefined){
-    component = <UserHome/>
+  var user = JSON.parse(localStorage.getItem("user"));
+  if(user === undefined){
+    return <Navigate to="/" />;
   }
   return (
     <div>
-      {component}
+      <UserHome />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

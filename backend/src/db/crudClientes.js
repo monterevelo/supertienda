@@ -81,13 +81,30 @@ function deleteCliente(cid, callback){
   }  
 
 
+//Filtrar un cliente de la BD
+function searchCliente(ciudad, callback){
+    return db.collection('clientes').where("ciudad","==",ciudad).get()
+        .then((refDoc) => {
+            var arrayClientes = [];
+            refDoc.forEach(doc => {
+                arrayClientes.push(doc.data());
+            })
+            callback (arrayClientes);
+        })
+        .catch((err) => {
+            callback("Error al buscar el cliente",err)
+        })
+}
+
+
   module.exports = {
       getClientes,
       getCliente,
       addCliente,
       UpdateClienteTotally,
       UpdateClientePartial,
-      deleteCliente
+      deleteCliente,
+      searchCliente
   }
 
 

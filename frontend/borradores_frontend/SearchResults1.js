@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import ConsultaCliente from '../components/ConsultaCliente'
 import {Navigate} from 'react-router-dom'
 
-const Historia = () => {
+const SearchResults = () => {
   var component = <Navigate to="/" />
   if (JSON.parse(localStorage.getItem('session')) != undefined) {
     component = <Container>

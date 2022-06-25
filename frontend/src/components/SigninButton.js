@@ -35,7 +35,7 @@ const uiConfig = {
                 id: authResult.user.uid,
                 isNew: authResult.additionalUserInfo.isNewUser,
             }
-            localStorage.setItem('session', JSON.stringify(objeto));
+            localStorage.setItem('user', JSON.stringify(objeto));
             return true;
         },
     },

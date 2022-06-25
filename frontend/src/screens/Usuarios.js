@@ -3,8 +3,8 @@ import {Navigate} from 'react-router-dom'
 
 
 const Usuarios =() => {
-  var component = <Navigate to="/"/>
-  if(JSON.parse(localStorage.getItem('session')) != undefined){
+  var component = <Navigate to="/" />
+  if(JSON.parse(localStorage.getItem('user')) != undefined){
     component = <h1>Usuarios</h1>
   }
   return (

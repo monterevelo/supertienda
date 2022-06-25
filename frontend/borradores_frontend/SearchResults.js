@@ -1,32 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
-import ResultList from '../components/ResultList';
+import {Navigate} from 'react-router-dom';
+import ResultList from '../src/components/ResultList';
 
-const Consulta1 = () => {
+const SearchResults = () => {
   var user = JSON.parse(localStorage.getItem("user"));
-  if (user === undefined) {
+  if (user == undefined) {
     return <Navigate to="/" />;
   }
   const city = localStorage.getItem("city");
   return (
     <Container>
-      <br></br>
       <Row>
-        <Col sm={2}>
-        </Col>
-        <Col>
-          <h1>Ciudad: {city}</h1>  
-        </Col>
+          <h1>Ciudad: {city}</h1>
       </Row>
-
       <Row>
         <Col>
           <ResultList />
         </Col>
-      </Row>
+      </Row>      
     </Container>
   )
 }
 
-export default Consulta1
+export default SearchResults
+

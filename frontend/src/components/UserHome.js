@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Row, Col, Stack, Image} from 'react-bootstrap'
 import logo from '../assets/img/logo-tienda1.jpg'
-import UserDropDown from './UserDropDown'
+import SearchBar from './SearchBar'
 
 const UserHome = () => {
   return (
@@ -10,7 +10,7 @@ const UserHome = () => {
             <Col>
                 <Stack gap={3} className="align-items-center">
                     <Image src={logo} width="700px" height="550px"/>
-                    <UserDropDown/>
+                    <SearchBar/>
                 </Stack>
             </Col>
         </Row>
