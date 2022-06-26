@@ -8,8 +8,8 @@ export function searchClientes(city, callback) {
         })
         .catch((err) => {
             callback(err);
-    })
-}
+    });
+};
 
 
 

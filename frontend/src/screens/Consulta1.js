@@ -5,7 +5,7 @@ import ResultList from '../components/ResultList';
 
 const Consulta1 = () => {
   var user = JSON.parse(localStorage.getItem("user"));
-  if (user === undefined) {
+  if (user == undefined) {
     return <Navigate to="/" />;
   }
   const city = localStorage.getItem("city");
@@ -13,7 +13,7 @@ const Consulta1 = () => {
     <Container>
       <br></br>
       <Row>
-        <Col sm={2}>
+        <Col sm={1}>
         </Col>
         <Col>
           <h1>Ciudad: {city}</h1>  

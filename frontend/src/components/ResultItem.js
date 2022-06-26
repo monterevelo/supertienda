@@ -10,14 +10,18 @@ const ResultItem =() => {
             width = "60px"
             height = "60px"
         />
+
         <div>
             <h5>German Montenegro Revelo</h5>
+
             <Stack gap={2} direction="horizontal">
                 <div>Pasto</div>
             </Stack>
+            
             <Stack gap={2} direction="horizontal">
                 <div>Clases de Programación</div>
             </Stack>
+        
         </div>
       </Stack>
     );

@@ -6,16 +6,17 @@ import Profile from "./Profile";
 import { searchClientes } from "../apis/ClientesCRUD";
 
 const ResultList = () => {
+  
   const city = localStorage.getItem("city");
   searchClientes(city, (res)=>{
     console.log(res);
-  })
+  });
 
   return (
     <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-      <br></br>
+      <br/>
       <Row>
-        <Col sm={2}>
+        <Col sm={1}>
         </Col>
         
         <Col sm={5}>
@@ -35,15 +36,24 @@ const ResultList = () => {
           </ListGroup>
         </Col>
 
-        <Col sm={3}>
+        <Col sm={5}>
           <Tab.Content>
             <Tab.Pane eventKey="#link1">
+              <Profile />
+            </Tab.Pane>
+            <Tab.Pane eventKey="#link2">
+              <Profile />
+            </Tab.Pane>
+            <Tab.Pane eventKey="#link3">
+              <Profile />
+            </Tab.Pane>
+            <Tab.Pane eventKey="#link4">
               <Profile />
             </Tab.Pane>
           </Tab.Content>
         </Col>
 
-        <Col sm={2}>
+        <Col sm={1}>
         </Col>
 
       </Row>

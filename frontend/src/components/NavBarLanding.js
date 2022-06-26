@@ -2,9 +2,7 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
 const NavBarLanding = () => {
-
   var user = JSON.parse(localStorage.getItem("user"));
-
   const logOut = () => {
     localStorage.removeItem("user");
   };
