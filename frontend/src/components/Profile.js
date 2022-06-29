@@ -1,25 +1,25 @@
 import React from "react";
 import { Stack, Image } from "react-bootstrap";
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <Stack gap={2} className="align-items-center">
       <Image
-        src="https://i.pinimg.com/550x/61/19/d1/6119d15a31c055db571287736da50339.jpg"
+        src={props.data.photoUrl}
         roundedCircle
         width="80px"
         height="80px"
       />
-      <h4>German Alirio Montenegro Revelo</h4>
+      <h4>{props.data.nombre}</h4>
       <div className="justify-content-center">
         <Stack gap={2} direction="horizontal">
-          <div>Pasto</div>
+          <div>{props.data.ciudad}</div>
         </Stack>
         <Stack gap={2} direction="horizontal">
-          <div>Clases de Programación</div>
+          <div>{props.data.email}</div>
         </Stack>
         <p>
-          Hola me encanta la tecnología y tengo bastante experiencia enseñando programación.
+          {props.data.observaciones}
         </p>
       </div>
     </Stack>
