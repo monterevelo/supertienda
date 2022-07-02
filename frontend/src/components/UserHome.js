@@ -5,6 +5,8 @@ import Bienvenido from './Bienvenido'
 import SearchBar from './SearchBar'
 
 const UserHome = () => {
+  var user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <Container fluid="md">
         <Row>
@@ -17,7 +19,7 @@ const UserHome = () => {
             </Col>
         </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default UserHome
+export default UserHome;

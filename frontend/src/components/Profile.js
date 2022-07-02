@@ -2,24 +2,26 @@ import React from "react";
 import { Stack, Image } from "react-bootstrap";
 
 const Profile = (props) => {
+  const  { clienteData }  = props;
+  
   return (
     <Stack gap={2} className="align-items-center">
       <Image
-        src={props.data.photoUrl}
+        src={clienteData.photoUrl}
         roundedCircle
         width="80px"
         height="80px"
       />
-      <h4>{props.data.nombre}</h4>
+      <h4>{clienteData.nombre}</h4>
       <div className="justify-content-center">
         <Stack gap={2} direction="horizontal">
-          <div>{props.data.ciudad}</div>
+          <div>{clienteData.ciudad}</div>
         </Stack>
         <Stack gap={2} direction="horizontal">
-          <div>{props.data.email}</div>
+          <div>{clienteData.email}</div>
         </Stack>
         <p>
-          {props.data.observaciones}
+          {clienteData.observaciones}
         </p>
       </div>
     </Stack>

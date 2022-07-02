@@ -4,7 +4,7 @@ import {Navigate} from 'react-router-dom'
 
 const Home =() => {
   var user = JSON.parse(localStorage.getItem("user"));
-  if(user === undefined){
+  if(user == undefined){
     return <Navigate to="/" />;
   }
   return (

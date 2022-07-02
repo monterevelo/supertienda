@@ -3,12 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import ResultList from '../components/ResultList';
 
-const Consulta1 = () => {
+const SearchResults = () => {
   var user = JSON.parse(localStorage.getItem("user"));
+  const city = localStorage.getItem("city");
+
   if (user == undefined) {
     return <Navigate to="/" />;
   }
-  const city = localStorage.getItem("city");
   return (
     <Container>
       <br></br>
@@ -16,17 +17,16 @@ const Consulta1 = () => {
         <Col sm={1}>
         </Col>
         <Col>
-          <h1>Ciudad: {city}</h1>  
+          <h2>Ciudad: {city}</h2>  
         </Col>
       </Row>
-
       <Row>
         <Col>
-          <ResultList />
+          <ResultList city={city} />
         </Col>
       </Row>
     </Container>
   )
 }
 
-export default Consulta1
+export default SearchResults;

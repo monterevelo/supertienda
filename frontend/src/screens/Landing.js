@@ -1,23 +1,18 @@
-import React from 'react'
-import MainLanding from '../components/MainLanding'
-import LandingTopic from '../components/LandingTopic'
-import { Navigate } from 'react-router-dom'
+import React from "react";
+import { Navigate } from "react-router-dom";
+
+import LandingImages from "../components/LandingImages";
 
 const Landing = () => {
-  var component = <Navigate to="/" />;
-  if (JSON.parse(localStorage.getItem("user")) !== undefined) {
-    component = 
-      <div>
-        <MainLanding />
-        <LandingTopic />
-      </div>
+  var user = JSON.parse(localStorage.getItem("user"));
+  if (user != undefined) {
+    if(user.flagNewUser == false){
+      return <Navigate to="/home" />;
+    }else{
+      return <Navigate to="/registro" />;
+    }    
   }
-  return (
-    <div>
-      {component}
-    </div>
-  );
+  return <LandingImages />;
 };
 
 export default Landing;
-

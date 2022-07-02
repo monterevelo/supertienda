@@ -1,6 +1,6 @@
 import React from 'react'
 import {Carousel} from 'react-bootstrap'
-import SigninButton from './SigninButton'
+import SigninButton from '../src/components/SigninButton'
 
 const MainLanding = () => {
     const estilo = {

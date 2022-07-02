@@ -3,28 +3,27 @@ import { Tab, Row, Col, ListGroup } from "react-bootstrap";
 import ResultItem from "./ResultItem";
 import Profile from "./Profile";
 
-import { searchClientes } from "../apis/ClientesCRUD";
+import { searchClientes } from "../apis/crud";
 
 const ResultList = (props) => {
-  //const city = localStorage.getItem("city");
-  const [clientes, setClientes] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   
   useEffect(()=>{
-    searchClientes(props.city, setClientes);
+    searchClientes(props.city, setSearchResults);
+    console.log(searchResults);
   }, []);
 
   return (
-    <Tab.Container id="list-group-tabs-example" defaultActiveKey="#0">
+    <Tab.Container id="list-group-tabs-example" /* defaultActiveKey="#0" - (Esto es opcional)*/ >  
       <br/>
       <Row>
-        <Col sm={1}>
-        </Col>
+        <Col sm={1} />
         
         <Col sm={5}>
           <ListGroup>
-            {clientes.map((cliente, index) => (
+            {searchResults.map((result, index) => (
               <ListGroup.Item action href={"#"+index}>
-                <ResultItem data={cliente} />
+                <ResultItem clienteData={result} />
               </ListGroup.Item>
             ))}
           </ListGroup>
@@ -32,16 +31,15 @@ const ResultList = (props) => {
 
         <Col sm={5}>
           <Tab.Content>
-            {clientes.map((cliente, index) => (
+            {searchResults.map((result, index) => (
               <Tab.Pane eventKey={"#"+index}>
-                <Profile data={cliente} />
+                <Profile clienteData={result} />
               </Tab.Pane>
             ))}
           </Tab.Content>
         </Col>
 
-        <Col sm={1}>
-        </Col>
+        <Col sm={1} />
 
       </Row>
     </Tab.Container>

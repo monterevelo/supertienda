@@ -1,6 +1,126 @@
 const db = require('./firebase.js');
 
 // Obtener todos los clientes
+function getClientes(callback) {
+    return db
+      .collection("clientes")
+      .get()
+      .then((docs) => {
+        var arrayClientes = [];
+        docs.forEach((cliente) => {
+          const obj = cliente.data();
+          obj.cid = cliente.id;
+          arrayClientes.push(obj);
+        });
+        // CUANDO LLEGAMOS ACÁ, SE DEBE ENVIAR LA RESPUESTA AL GET REQUEST
+        callback(arrayClientes);
+      })
+      .catch((error) => {
+        callback(`Error al obtener clientes ${error}`);
+      });
+  }
+  
+  // Obtener un cliente específico
+  function getCliente(cid, callback) {
+    return db
+      .collection("clientes")
+      .doc(cid)
+      .get()
+      .then((refDoc) => {
+        callback(refDoc.data());
+      })
+      .catch((error) => {
+        callback(`Error al obtener clientes ${error}`);
+      });
+  }
+  
+  // Crear un cliente
+  function addCliente(cliente, callback) {
+    return db
+      .collection("clientes")
+      .add(cliente)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error al crear cliente ${error}`);
+      });
+  }
+  
+  function addClienteWithID(cid, cliente, callback) {
+    return db
+      .collection("clientes")
+      .doc(cid)
+      .set(cliente)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error al crear cliente ${error}`);
+      });
+  }
+  
+  function updateClienteTotally(cid, cliente, callback) {
+    return db
+      .collection("clientes")
+      .doc(cid)
+      .set(cliente)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error al actualizar cliente ${error}`);
+      });
+  }
+  
+  function updateClientePartially(cid, cliente, callback) {
+    return db
+      .collection("clientes")
+      .doc(cid)
+      .update(cliente)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error al actualizar cliente ${error}`);
+      });
+  }
+  
+  function deleteCliente(cid, callback) {
+    return db
+      .collection("clientes")
+      .doc(cid)
+      .delete()
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error al eliminar cliente ${error}`);
+      });
+  }
+  
+  function searchCliente(ciudad, callback) {
+    return db
+      .collection("clientes")
+      .where("ciudad", "==", ciudad)
+      .get()
+      .then((refDoc) => {
+        var arrayClientes = [];
+        refDoc.forEach((doc) => {
+          //doc.id --> El id del documento
+          arrayClientes.push(doc.data());
+        });
+        callback(arrayClientes);
+      })
+      .catch((err) => {
+        callback("Error al buscar cliente ", err);
+      });
+  }
+
+//*************************************** 
+
+/* 
+// Obtener todos los clientes
 function getClientes(callback){
     return db.collection('clientes').get()
         .then((refDoc)=>{
@@ -94,15 +214,19 @@ function searchCliente(ciudad, callback){
         .catch((err) => {
             callback("Error al buscar el cliente",err)
         });
-};
+}; */
+
+
+//********************************* */
 
 
   module.exports = {
       getClientes,
       getCliente,
       addCliente,
-      UpdateClienteTotally,
-      UpdateClientePartial,
+      addClienteWithID,
+      updateClienteTotally,
+      updateClientePartially,
       deleteCliente,
       searchCliente
   }
