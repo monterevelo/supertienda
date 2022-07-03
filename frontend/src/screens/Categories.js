@@ -1,11 +1,10 @@
 import React from 'react'
 import {Navigate} from 'react-router-dom'
 
-
-const MapaSitio =() => {
+const Categories =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Mapa del Sitio</h1>
+    component = <h1>Categories</h1>
   }
   return (
     <div>
@@ -14,4 +13,4 @@ const MapaSitio =() => {
   )
 }
 
-export default MapaSitio
+export default Categories;

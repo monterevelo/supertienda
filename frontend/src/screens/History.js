@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const ResponderMensaje =() => {
+const History =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Responder Mensaje</h1>
+    component = <h1>History</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const ResponderMensaje =() => {
   )
 }
 
-export default ResponderMensaje
+export default History;

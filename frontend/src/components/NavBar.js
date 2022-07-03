@@ -18,23 +18,23 @@ const NavBar = () => {
     navLinks = (
       <Nav>
         <Nav className="me-auto">
-          <NavDropdown title="Quienes Somos" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="historia">Historia</NavDropdown.Item>
-            <NavDropdown.Item href="mision">Misión</NavDropdown.Item>
-            <NavDropdown.Item href="vision">Visión</NavDropdown.Item>
+          <NavDropdown title="About Us" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="history">History</NavDropdown.Item>
+            <NavDropdown.Item href="mission">Mission</NavDropdown.Item>
+            <NavDropdown.Item href="vision">Vision</NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="usuarios">Usuarios</Nav.Link>
-          <Nav.Link href="clientes">Clientes</Nav.Link>
-          <Nav.Link href="productos">Productos</Nav.Link>
-          <Nav.Link href="categorias">Categorias</Nav.Link>
-          <Nav.Link href="tiendas">Tiendas</Nav.Link>
-          <Nav.Link href="ventas">Ventas</Nav.Link>
-          <NavDropdown title="Contáctenos" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="enviarmensaje">Enviar mensaje</NavDropdown.Item>
-            <NavDropdown.Item href="respondermensaje">Responder mensaje</NavDropdown.Item>
-            <NavDropdown.Item href="infodesarrollador">Info Desarrollador</NavDropdown.Item>
+          <Nav.Link href="administrators">Administrators</Nav.Link>
+          <Nav.Link href="customers">Customers</Nav.Link>
+          <Nav.Link href="products">Products</Nav.Link>
+          <Nav.Link href="categories">Categories</Nav.Link>
+          <Nav.Link href="stores">Stores</Nav.Link>
+          <Nav.Link href="sales">Sales</Nav.Link>
+          <NavDropdown title="Contact Us" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="sendmessage">Send Message</NavDropdown.Item>
+            <NavDropdown.Item href="replymessage">Reply Message</NavDropdown.Item>
+            <NavDropdown.Item href="developerinfo">Developer Information</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="mapasitio">Mapa del sitio</NavDropdown.Item>
+            <NavDropdown.Item href="sitemap">Site Map</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Nav>
@@ -44,8 +44,8 @@ const NavBar = () => {
           <Nav.Link href="/home">
             <strong>{user.name}</strong>
           </Nav.Link>
-          <Nav.Link href="/home">Inicio</Nav.Link>
-          <Nav.Link href="/" onClick={logOut}>Salir</Nav.Link>
+          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="/" onClick={logOut}>Log Out</Nav.Link>
         </Nav>
       </Nav>
     );
@@ -55,7 +55,7 @@ const NavBar = () => {
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Supertienda</Navbar.Brand>
+          <Navbar.Brand href="#home">SuperStore</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse

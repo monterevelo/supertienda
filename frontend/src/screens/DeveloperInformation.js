@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const Productos =() => {
+const DeveloperInformation =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Productos</h1>
+    component = <h1>DeveloperInformation</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Productos =() => {
   )
 }
 
-export default Productos
+export default DeveloperInformation;

@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const Usuarios =() => {
+const Administrators =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Usuarios</h1>
+    component = <h1>Administrators</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Usuarios =() => {
   )
 }
 
-export default Usuarios
+export default Administrators;

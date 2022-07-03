@@ -8,7 +8,7 @@ const NotFound = () => {
   if (JSON.parse(localStorage.getItem('user')) != undefined) {
     component = <Alert key="1" variant="danger">
       Not Found
-      <Alert.Link href="/">...    Volver.</Alert.Link>
+      <Alert.Link href="/">...    Return.</Alert.Link>
     </Alert>
   }
   return (

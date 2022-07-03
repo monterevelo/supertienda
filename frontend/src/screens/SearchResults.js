@@ -17,7 +17,7 @@ const SearchResults = () => {
         <Col sm={1}>
         </Col>
         <Col>
-          <h2>Ciudad: {city}</h2>  
+          <h2>City: {city}</h2>  
         </Col>
       </Row>
       <Row>

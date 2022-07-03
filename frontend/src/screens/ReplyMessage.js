@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const Mision =() => {
+const ReplyMessage =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Misión</h1>
+    component = <h1>Reply Message</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Mision =() => {
   )
 }
 
-export default Mision
+export default ReplyMessage;

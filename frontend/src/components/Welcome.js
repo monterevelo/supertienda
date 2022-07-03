@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Bienvenido = () => {
+const Welcome = () => {
     var user = JSON.parse(localStorage.getItem("user"));
     return (
         <div>
-            <h3> Bienvenid@ {user.name} </h3>
+            <h3> Welcome {user.name} </h3>
         </div>
     )
 }
 
-export default Bienvenido;
+export default Welcome;

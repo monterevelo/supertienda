@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const Tiendas =() => {
+const SendMessage =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Tiendas</h1>
+    component = <h1>Send Message</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Tiendas =() => {
   )
 }
 
-export default Tiendas
+export default SendMessage;

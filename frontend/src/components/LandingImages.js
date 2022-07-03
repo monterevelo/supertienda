@@ -5,8 +5,8 @@ import SignInButton from './SignInButton';
 const LandingImages = () => {
   const carCaption = (
     <>
-      <h1>Supertienda</h1>
-      <h3>La forma inteligente de manejar tu negocio ***</h3>
+      <h1>SuperStore</h1>
+      <h3>The smart way to run your business</h3>
       <SignInButton />
     </>
   );

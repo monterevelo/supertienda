@@ -2,10 +2,10 @@ import React from 'react'
 import {Navigate} from 'react-router-dom'
 
 
-const Historia =() => {
+const SiteMap =() => {
   var component = <Navigate to="/" />
   if(JSON.parse(localStorage.getItem('user')) != undefined){
-    component = <h1>Historia</h1>
+    component = <h1>SiteMap</h1>
   }
   return (
     <div>
@@ -14,4 +14,4 @@ const Historia =() => {
   )
 }
 
-export default Historia
+export default SiteMap;

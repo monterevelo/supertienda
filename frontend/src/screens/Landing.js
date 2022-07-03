@@ -9,7 +9,7 @@ const Landing = () => {
     if(user.flagNewUser == false){
       return <Navigate to="/home" />;
     }else{
-      return <Navigate to="/registro" />;
+      return <Navigate to="/register" />;
     }    
   }
   return <LandingImages />;

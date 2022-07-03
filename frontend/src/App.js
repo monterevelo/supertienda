@@ -13,22 +13,24 @@ import NavBar from "./components/NavBar";
 import Home from "./screens/Home";
 import Landing from "./screens/Landing";
 import NotFound from "./screens/NotFound";
-import Usuarios from "./screens/Usuarios";
-import Clientes from "./screens/Clientes";
-import Productos from "./screens/Productos";
-import Categorias from "./screens/Categorias";
-import Tiendas from "./screens/Tiendas";
-import Ventas from "./screens/Ventas";
+import Administrators from "./screens/Administrators";
+import Customers from "./screens/Customers";
+import Products from "./screens/Products";
+import Categories from "./screens/Categories";
+import Stores from "./screens/Stores";
+import Sales from "./screens/Sales";
 import SearchResults from "./screens/SearchResults";
-import Historia from "./screens/Historia";
-import Mision from "./screens/Mision";
+import History from "./screens/History";
+import Mission from "./screens/Mission";
 import Vision from "./screens/Vision";
-import EnviarMensaje from "./screens/EnviarMensaje";
-import ResponderMensaje from "./screens/ResponderMensaje";
-import InfoDesarrollador from "./screens/InfoDesarrollador";
-import MapaSitio from "./screens/MapaSitio";
-import Registro from "./screens/Registro";
-import IniciarSesion from "./screens/IniciarSesion";
+import SendMessage from "./screens/SendMessage";
+import ReplyMessage from "./screens/ReplyMessage";
+import DeveloperInformation from "./screens/DeveloperInformation";
+import SiteMap from "./screens/SiteMap";
+import Register from "./screens/Register";
+
+
+
 
 
 function App() {
@@ -39,23 +41,24 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/usuarios" element={<Usuarios />} />
-          <Route path="/clientes" element={<Clientes />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/categorias" element={<Categorias />} />
-          <Route path="/tiendas" element={<Tiendas />} />
-          <Route path="/ventas" element={<Ventas />} />
+          <Route path="/administrators" element={<Administrators />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/stores" element={<Stores />} />
+          <Route path="/sales" element={<Sales />} />
           <Route path="/searchresults" element={<SearchResults />} />
-          <Route path="/historia" element={<Historia />} />
-          <Route path="/mision" element={<Mision />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/mission" element={<Mission />} />
           <Route path="/vision" element={<Vision />} />
-          <Route path="/enviarmensaje" element={<EnviarMensaje />} />
-          <Route path="/respondermensaje" element={<ResponderMensaje />} />
-          <Route path="/infodesarrollador" element={<InfoDesarrollador />} />
-          <Route path="/mapasitio" element={<MapaSitio />} />
-          <Route path="/registro" element={<Registro />} />
-          <Route path="/iniciarsesion" element={<IniciarSesion />} />
+          <Route path="/sendmessage" element={<SendMessage />} />
+          <Route path="/replymessage" element={<ReplyMessage />} />
+          <Route path="/developerinformation" element={<DeveloperInformation />} />
+          <Route path="/sitemap" element={<SiteMap />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/*" element={<NotFound />} />
+
+          
         </Routes>
       </BrowserRouter>
     </div>

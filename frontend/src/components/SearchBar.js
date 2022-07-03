@@ -13,7 +13,7 @@ const SearchBar = () => {
     <Dropdown>
  
       <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          ¿En que ciudad está la <strong>Tienda</strong>?
+          ¿What city is the <strong>Store</strong> in?
       </Dropdown.Toggle> 
             
       <Dropdown.Menu>
