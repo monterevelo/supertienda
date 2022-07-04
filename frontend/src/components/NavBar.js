@@ -18,6 +18,7 @@ const NavBar = () => {
     navLinks = (
       <Nav>
         <Nav className="me-auto">
+          <Nav.Link href="/home">Home</Nav.Link>
           <NavDropdown title="About Us" id="collasible-nav-dropdown">
             <NavDropdown.Item href="history">History</NavDropdown.Item>
             <NavDropdown.Item href="mission">Mission</NavDropdown.Item>
@@ -39,12 +40,12 @@ const NavBar = () => {
         </Nav>
         <Nav>
           <Nav.Link href="/home">
-            <Image src= {user.photoUrl} width="30px" height="30px" roundedCircle />
+            <Image src={user.photoUrl} width="30px" height="30px" roundedCircle />
           </Nav.Link>
           <Nav.Link href="/home">
             <strong>{user.name}</strong>
           </Nav.Link>
-          <Nav.Link href="/home">Home</Nav.Link>
+
           <Nav.Link href="/" onClick={logOut}>Log Out</Nav.Link>
         </Nav>
       </Nav>

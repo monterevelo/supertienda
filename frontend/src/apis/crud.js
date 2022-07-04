@@ -9,9 +9,12 @@ export function searchCustomers(city, callback) {
 };
 
 export function addCustomer(customer, callback) {
+  console.log(customer);
+  console.log(customer.id);
   axios.post(baseUrl + "/customers/" + customer.id, customer)
     .then((res) => {
       callback(res.data);
+      console.log(res.data);
     })
     .catch((err) => {
       callback(err);

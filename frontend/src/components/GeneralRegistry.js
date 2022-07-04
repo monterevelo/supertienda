@@ -5,6 +5,7 @@ import { addCustomer } from '../apis/crud';
 
 const GeneralRegistry = () => {
     var user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
    
     function save(even) {
         even.preventDefault();
@@ -21,6 +22,8 @@ const GeneralRegistry = () => {
             id: user.uid,
         }
         addCustomer(obj, (res) => {
+            console.log(obj);
+            console.log(res);
             if (res == "Success") {
                 user.flagNewUser = false;
                 localStorage.setItem("user", JSON.stringify(user));

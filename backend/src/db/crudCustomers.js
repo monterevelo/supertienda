@@ -1,121 +1,134 @@
 const db = require('./firebase.js');
 
-// Obtener todos los clientes
-function getClientes(callback) {
+// Get all customers
+function getCustomers(callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .get()
       .then((docs) => {
-        var arrayClientes = [];
-        docs.forEach((cliente) => {
-          const obj = cliente.data();
-          obj.cid = cliente.id;
-          arrayClientes.push(obj);
+        var arrayCustomers = [];
+        docs.forEach((customer) => {
+          const obj = customer.data();
+          obj.cid = customer.id;
+          arrayCustomers.push(obj);
         });
-        // CUANDO LLEGAMOS ACÁ, SE DEBE ENVIAR LA RESPUESTA AL GET REQUEST
-        callback(arrayClientes);
+        // WHEN WE GET HERE, THE RESPONSE SHOULD BE SENT TO THE GET REQUEST
+        callback(arrayCustomers);
       })
       .catch((error) => {
-        callback(`Error al obtener clientes ${error}`);
+        callback(`Error getting customers ${error}`);
       });
   }
   
-  // Obtener un cliente específico
-  function getCliente(cid, callback) {
+  // Get a specific customer
+  function getCustomer(cid, callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .doc(cid)
       .get()
       .then((refDoc) => {
         callback(refDoc.data());
       })
       .catch((error) => {
-        callback(`Error al obtener clientes ${error}`);
+        callback(`Error getting customer ${error}`);
       });
   }
   
-  // Crear un cliente
-  function addCliente(cliente, callback) {
+  // Create a customer
+  function addCustomer(customer, callback) {
     return db
-      .collection("clientes")
-      .add(cliente)
+      .collection("customers")
+      .add(customer)
       .then(() => {
         callback("Success");
       })
       .catch((error) => {
-        callback(`Error al crear cliente ${error}`);
+        callback(`Error creating customer ${error}`);
       });
   }
   
-  function addClienteWithID(cid, cliente, callback) {
+  function addCustomerWithID(cid, customer, callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .doc(cid)
-      .set(cliente)
+      .set(customer)
       .then(() => {
         callback("Success");
       })
       .catch((error) => {
-        callback(`Error al crear cliente ${error}`);
+        callback(`Error creating customer ${error}`);
       });
   }
   
-  function updateClienteTotally(cid, cliente, callback) {
+  function updateCustomerTotally(cid, customer, callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .doc(cid)
-      .set(cliente)
+      .set(customer)
       .then(() => {
         callback("Success");
       })
       .catch((error) => {
-        callback(`Error al actualizar cliente ${error}`);
+        callback(`Error updating customer ${error}`);
       });
   }
   
-  function updateClientePartially(cid, cliente, callback) {
+  function updateCustomerPartially(cid, customer, callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .doc(cid)
-      .update(cliente)
+      .update(customer)
       .then(() => {
         callback("Success");
       })
       .catch((error) => {
-        callback(`Error al actualizar cliente ${error}`);
+        callback(`Error updating customer ${error}`);
       });
   }
   
-  function deleteCliente(cid, callback) {
+  function deleteCustomer(cid, callback) {
     return db
-      .collection("clientes")
+      .collection("customers")
       .doc(cid)
       .delete()
       .then(() => {
         callback("Success");
       })
       .catch((error) => {
-        callback(`Error al eliminar cliente ${error}`);
+        callback(`Error removing customer ${error}`);
       });
   }
   
-  function searchCliente(ciudad, callback) {
+  function searchCustomer(city, callback) {
     return db
-      .collection("clientes")
-      .where("ciudad", "==", ciudad)
+      .collection("customers")
+      .where("city", "==", city)
       .get()
       .then((refDoc) => {
-        var arrayClientes = [];
+        var arrayCustomers = [];
         refDoc.forEach((doc) => {
           //doc.id --> El id del documento
-          arrayClientes.push(doc.data());
+          arrayCustomers.push(doc.data());
         });
-        callback(arrayClientes);
+        callback(arrayCustomers);
       })
       .catch((err) => {
-        callback("Error al buscar cliente ", err);
+        callback("Error searching customer ", err);
       });
   }
+
+
+  module.exports = {
+    getCustomers,
+    getCustomer,
+    addCustomer,
+    addCustomerWithID,
+    updateCustomerTotally,
+    updateCustomerPartially,
+    deleteCustomer,
+    searchCustomer
+}
+
 
 //*************************************** 
 
@@ -220,16 +233,7 @@ function searchCliente(ciudad, callback){
 //********************************* */
 
 
-  module.exports = {
-      getClientes,
-      getCliente,
-      addCliente,
-      addClienteWithID,
-      updateClienteTotally,
-      updateClientePartially,
-      deleteCliente,
-      searchCliente
-  }
+  
 
 
 

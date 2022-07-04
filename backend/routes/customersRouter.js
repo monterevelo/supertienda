@@ -1,35 +1,35 @@
 const express = require('express');
-const dbC = require('../src/db/crudClientes.js');
-//const axios = require('axios').default;
+const dbC = require('../src/db/crudCustomers.js');
+const axios = require('axios').default;
 const router = express.Router();
 
-//Petición para obtener todos los clientes
+//Request to get all customers
 router.get('/', function(req, res){
-    dbC.getClientes(function(arrayClientes){
-        res.json(arrayClientes);
+    dbC.getCustomers(function(arrayCustomers){
+        res.json(arrayCustomers);
     });
 });
 
-//Petición para obtener un cliente en particular mediante su índice de posición en la BD
+//Request to obtain a particular customer through its position index in the DB
 router.get('/', function(req, res){
-    dbC.getClientes(function(arrayClientes){
-        res.json(arrayClientes[0]);
+    dbC.getCustomers(function(arrayCustomers){
+        res.json(arrayCustomers[0]);
     });
 });
 
-//Petición para obtener un cliente en particular mediante su id
+//Request to obtain a particular customer through its id
 router.get('/:id', function(req, res){  
     const cid = req.params.id;
-    dbC.getCliente(cid, function(refDoc){
+    dbC.getCustomer(cid, function(refDoc){
         res.json(refDoc);
     });
 });
 
-//Petición para crear un cliente
+//Request to create a customer
 router.post('/', function(req, res){ 
-    const cliente = req.body;
+    const customer = req.body;
     console.log(req.params);
-    dbC.addCliente(cliente, function(status){
+    dbC.addCustomer(customer, function(status){
         if(status === "Success"){
             res.status(201).json(status);
         }else{
@@ -38,51 +38,52 @@ router.post('/', function(req, res){
     });
 });
 
-
-//Petición para crear un cliente con id
+//Request to create a customer with id
 router.post("/:id", function (req, res) {
     const cid = req.params.id;
-    const cliente = req.body;
-    cliente.id = cid;
-    dbC.addClienteWithID(cid, cliente, function (status) {
+    const customer = req.body;
+    customer.id = cid;
+    dbC.addCustomerWithID(cid, customer, function (status) {
       res.json(status);
     });
   });
 
 
-//Petición para actualizar un cliente, sobre-escribiendo en la BD
+//Request to update a customer, overwriting the DB
 router.put('/:id', function(req, res){ 
-    const cliente = req.body;
+    const customer = req.body;
     const cid = req.params.id;
-    dbC.updateClienteTotally(cid, cliente, function(status){
+    dbC.updateCustomerTotally(cid, customer, function(status){
         res.json(status);
     });
 });
 
-//Petición para actualizar un cliente, sin sobre-escribir en la BD
+//Request to update a customer, without overwriting the DB
 router.patch('/:id', function(req, res){ 
-    const cliente = req.body;
+    const customer = req.body;
     const cid = req.params.id;
-    dbC.updateClientePartially(cid, cliente, function(status){
+    dbC.updateCustomerPartially(cid, customer, function(status){
         res.json(status);
     });
 });
 
-//Petición para eliminar un cliente de la BD
+//Request to remove a client from the DB
 router.delete('/:id', function(req, res){ 
     const cid = req.params.id;
-    dbC.deleteCliente(cid, function(status){
+    dbC.deleteCustomer(cid, function(status){
         res.json(status);
     });
 });
 
-//Petición para buscar un cliente en la BD filtrando datos - Traer un cliente por ubicación
-router.get('/search/:ciudad', function (req, res) { 
-    const cciudad = req.params.ciudad;
-    dbC.searchCliente(cciudad, function(refDoc){
+//Request to search for a customer in the DB filtering data - Bring a customer by location
+router.get('/search/:city', function (req, res) { 
+    const ccity = req.params.city;
+    dbC.searchCustomer(ccity, function(refDoc){
         res.json(refDoc);
     });
 });
+
+module.exports = router;
 
 
 //************************
@@ -158,4 +159,3 @@ router.get('/search/:ciudad', function (req, res) {
 
 //******************** */
 
-module.exports = router;
