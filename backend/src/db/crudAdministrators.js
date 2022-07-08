@@ -17,7 +17,7 @@ function getAdministrator(aid, callback) {
 }
 
 
-// Add an administrator
+/* // Add an administrator
 function addAdministrator(administrator, callback) {
     return db.collection('administrators').add(administrator)
         .then(() => {
@@ -26,7 +26,43 @@ function addAdministrator(administrator, callback) {
         .catch(err => {
             callback("Failed to create administrator", err)
         })
-}
+} */
+
+
+//*********************
+
+// Add an administrator
+function addAdministrator(administrator, callback) {
+    return db
+      .collection("administrators")
+      .add(administrator)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error creating administrator ${error}`);
+      });
+  }
+  
+  //Add an administrator through their id
+  function addAdministratorWithID(aid, administrator, callback) {
+    return db
+      .collection("administrators")
+      .doc(aid)
+      .set(administrator)
+      .then(() => {
+        callback("Success");
+      })
+      .catch((error) => {
+        callback(`Error creating administrator ${error}`);
+      });
+  }
+
+
+//*********************
+
+
+
 
 // Update an administrator, overwriting in the DB
 function updateAdministratorTotally(aid, administrator, callback) {
@@ -70,6 +106,7 @@ function searchAdministrator(city, callback) {
 module.exports = {
     getAdministrator,
     addAdministrator,
+    addAdministratorWithID,
     updateAdministratorTotally,
     deleteAdministrator,
     searchAdministrator

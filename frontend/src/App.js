@@ -29,6 +29,7 @@ import DeveloperInformation from "./screens/DeveloperInformation";
 import SiteMap from "./screens/SiteMap";
 import Register from "./screens/Register";
 
+import Prueba from "./screens/Prueba";
 
 
 
@@ -58,7 +59,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<NotFound />} />
 
-          
+          <Route path="/prueba" element={<Prueba />} />
+                    
         </Routes>
       </BrowserRouter>
     </div>

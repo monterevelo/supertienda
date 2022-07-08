@@ -34,7 +34,7 @@ function getCustomers(callback) {
       });
   }
   
-  // Create a customer
+  // Add a customer
   function addCustomer(customer, callback) {
     return db
       .collection("customers")
@@ -47,6 +47,7 @@ function getCustomers(callback) {
       });
   }
   
+  //Add a costumer through their id
   function addCustomerWithID(cid, customer, callback) {
     return db
       .collection("customers")
@@ -60,6 +61,7 @@ function getCustomers(callback) {
       });
   }
   
+  // Update a costumer, overwriting in the DB
   function updateCustomerTotally(cid, customer, callback) {
     return db
       .collection("customers")
@@ -73,6 +75,7 @@ function getCustomers(callback) {
       });
   }
   
+  // Update a costumer, without overwriting in the DB
   function updateCustomerPartially(cid, customer, callback) {
     return db
       .collection("customers")
@@ -86,6 +89,7 @@ function getCustomers(callback) {
       });
   }
   
+  // Delete a costumer from the DB
   function deleteCustomer(cid, callback) {
     return db
       .collection("customers")
@@ -99,6 +103,7 @@ function getCustomers(callback) {
       });
   }
   
+  // Filter a costumer from the DB
   function searchCustomer(city, callback) {
     return db
       .collection("customers")

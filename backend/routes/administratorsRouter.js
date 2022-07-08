@@ -11,8 +11,40 @@ router.get('/:id', (req, res)=>{
     })
 })
 
+
+//*******************
+
 //Request to create an administrator
-router.post('/', (req, res)=>{ 
+router.post('/', function(req, res){ 
+    const administrator = req.body;
+    console.log(req.params);
+    dbA.addAdministrator(administrator, function(status){
+        if(status === "Success"){
+            res.status(201).json(status);
+        }else{
+            res.status(503).json(status);
+        }
+    });
+});
+
+//Request to create an administrator with id
+router.post("/:id", function (req, res) {
+    const aid = req.params.id;
+    const administrator = req.body;
+    administrator.id = aid;
+    dbA.addAdministratorWithID(aid, administrator, function (status) {
+      res.json(status);
+    });
+  });
+
+
+//******************** */
+
+
+
+
+//Request to create an administrator
+/* router.post('/', (req, res)=>{ 
     const administrator = req.body;
     const country = administrator.country;
     axios.get('https://restcountries.com/v3.1/name/'+country)
@@ -32,7 +64,7 @@ router.post('/', (req, res)=>{
                 }
             })
         });
-})
+}) */
 
 //Request to update an administrator, overwriting in the DB
 router.put('/:id', (req, res)=>{ 

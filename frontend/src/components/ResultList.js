@@ -3,7 +3,7 @@ import { Tab, Row, Col, ListGroup } from "react-bootstrap";
 import ResultItem from "./ResultItem";
 import Profile from "./Profile";
 
-import { searchCustomers } from "../apis/crud";
+import { searchCustomers } from "../apis/crudCustomer";
 
 const ResultList = (props) => {
   const [searchResults, setSearchResults] = useState([]);
