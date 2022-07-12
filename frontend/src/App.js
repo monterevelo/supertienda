@@ -2,12 +2,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-//Variable global
-//import { URL } from './constants/global';
-
 //Components
 import NavBar from "./components/NavBar";
-//import NavBarLanding from "./components/NavBarLanding";
 
 //Import screens
 import Home from "./screens/Home";
@@ -31,15 +27,15 @@ import Register from "./screens/Register";
 
 import Prueba from "./screens/Prueba";
 
-
-
-
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+        
         <NavBar />
+        
         <Routes>
+
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/administrators" element={<Administrators />} />
@@ -62,6 +58,7 @@ function App() {
           <Route path="/prueba" element={<Prueba />} />
                     
         </Routes>
+
       </BrowserRouter>
     </div>
   );

@@ -26,6 +26,7 @@ const AdministratorRegistry = () => {
             console.log(res);
             if (res == "Success") {
                 user.flagNewUser = false;
+                user.flagWithoutData = false;
                 localStorage.setItem("user", JSON.stringify(user));
                 localStorage.removeItem("role");
                 window.location.href = "/home";
@@ -37,16 +38,18 @@ const AdministratorRegistry = () => {
     };
 
     return (
+
         <>
-            
+
             <div style={{ textAlign: "center" }}>
                 <br /><br />
                 <h1>Administrator Registration</h1>
                 <br />
                 
             </div>
+
             <Form onSubmit={save}>
-            
+
                 <Form.Group className="mb-3" controlId="indentificationCard">
                     <Form.Label>Identification Card</Form.Label>
                     <Form.Control type="text" placeholder="Enter your Indentification Card" />
@@ -78,23 +81,20 @@ const AdministratorRegistry = () => {
 
                 <Container fluid="md"/*  className='align-items-center' */>
                     <Row>
-                    
                         <Button variant='dark' type='submit'>
                             Done
-                            
                         </Button>
                     </Row>
-                    
                 </Container>
                 <br/>
                 <br/>
+
             </Form>
-            
-            
+
         </>
-       
+
     )
-    
+
 }
 
 export default AdministratorRegistry;

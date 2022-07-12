@@ -25,6 +25,7 @@ const CustomerRegistry = () => {
             console.log(res);
             if (res == "Success") {
                 user.flagNewUser = false;
+                user.flagWithoutData = false;
                 localStorage.setItem("user", JSON.stringify(user));
                 localStorage.removeItem("role");
                 window.location.href = "/home";

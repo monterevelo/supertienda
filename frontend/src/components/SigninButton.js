@@ -38,6 +38,7 @@ const uiConfig = {
                 photoUrl: authResult.user.photoURL,
                 email: authResult.user.email,
                 flagNewUser: authResult.additionalUserInfo.isNewUser,
+                flagWithoutData: authResult.additionalUserInfo.isNewUser,
             };
 
             localStorage.setItem('user', JSON.stringify(user));
