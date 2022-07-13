@@ -55,14 +55,15 @@ const Prueba = () => {
         };
 
         Component = (
-            <div className="d-grid gap-2">
+            <div className="gap-2" style={{ textAlign: "center" }}>
                 <br /><br /><br /><br /><br />
                 <h2 style={{ textAlign: "center" }}>Choose your role</h2>
                 <br />
-                <Button variant="primary" size="lg" onClick={admin}>
+                <Button variant="primary" size="lg" style={{ width: "500px" }} onClick={admin}>
                     Administrador
                 </Button>
-                <Button variant="secondary" size="lg" onClick={cust}>
+                <br /> <br /> 
+                <Button variant="secondary" size="lg" style={{ width: "500px" }} onClick={cust}>
                     Customer
                 </Button>
             </div>

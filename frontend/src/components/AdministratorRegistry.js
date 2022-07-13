@@ -12,12 +12,12 @@ const AdministratorRegistry = () => {
         even.preventDefault();
         const obj = {
             indentificationCard: even.target[0].value,
-            name: even.target[1].value,
             city: even.target[2].value,
             country: even.target[3].value,
             cellPhoneNumber: even.target[4].value,
-            email: even.target[5].value,
             observations: even.target[6].value,
+            name: user.name,
+            email: user.email,
             photoUrl: user.photoUrl,
             id: user.uid,
         };
@@ -51,33 +51,35 @@ const AdministratorRegistry = () => {
             <Form onSubmit={save}>
 
                 <Form.Group className="mb-3" controlId="indentificationCard">
-                    <Form.Label>Identification Card</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your Indentification Card" />
+                    <Form.Label>Identification Card *</Form.Label>
+                    <Form.Control type="text" placeholder="Enter your Indentification Card" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="name">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder={user.name} />
+                    <Form.Label>Name *</Form.Label>
+                    <Form.Control type="text" placeholder={user.name} disabled/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="city">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your city" />
+                    <Form.Label>City *</Form.Label>
+                    <Form.Control type="text" placeholder="Enter your city" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="country">
-                    <Form.Label>Country</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your Country" />
+                    <Form.Label>Country *</Form.Label>
+                    <Form.Control type="text" placeholder="Enter your Country" required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="cellPhoneNumber">
-                    <Form.Label>Cell Phone Number</Form.Label>
-                    <Form.Control type="tel" placeholder="Enter your Cell Phone Number" />
+                    <Form.Label>Cell Phone Number *</Form.Label>
+                    <Form.Control type="tel" placeholder="Enter your Cell Phone Number" required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder={user.email} />
+                    <Form.Label>Email *</Form.Label>
+                    <Form.Control type="email" placeholder={user.email} disabled />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="observations">
                     <Form.Label>Observations</Form.Label>
-                    <Form.Control as="textarea" rows={3}  placeholder="Enter your Observations" type="text"/>
+                    <Form.Control as="textarea" rows={3}  placeholder="Enter your Observations" type="text" />
                 </Form.Group>
+                <h6>(*) Required fields</h6>
+                <br/>
 
                 <Container fluid="md"/*  className='align-items-center' */>
                     <Row>
